@@ -20,7 +20,11 @@ import { MessageModule } from './messages/message.module';
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', component: PageNotFoundComponent }
+    ]),
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     ProductModule,
     UserModule,
@@ -31,6 +35,6 @@ import { MessageModule } from './messages/message.module';
     WelcomeComponent,
     PageNotFoundComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
