@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var login_component_1 = require("./login.component");
 var auth_service_1 = require("./auth.service");
 var shared_module_1 = require("../shared/shared.module");
@@ -17,7 +18,10 @@ var UserModule = (function () {
 UserModule = __decorate([
     core_1.NgModule({
         imports: [
-            shared_module_1.SharedModule
+            shared_module_1.SharedModule,
+            router_1.RouterModule.forChild([
+                { path: 'login', component: login_component_1.LoginComponent }
+            ])
         ],
         declarations: [
             login_component_1.LoginComponent
