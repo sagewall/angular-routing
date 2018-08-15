@@ -21,16 +21,7 @@ var ProductEditComponent = (function () {
         this.pageTitle = 'Product Edit';
     }
     ProductEditComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.params.subscribe(function (params) {
-            var id = +params['id'];
-            _this.getProduct(id);
-        });
-    };
-    ProductEditComponent.prototype.getProduct = function (id) {
-        var _this = this;
-        this.productService.getProduct(id)
-            .subscribe(function (product) { return _this.onProductRetrieved(product); }, function (error) { return _this.errorMessage = error; });
+        this.onProductRetrieved(this.route.snapshot.data['product']);
     };
     ProductEditComponent.prototype.onProductRetrieved = function (product) {
         this.product = product;
