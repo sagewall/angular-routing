@@ -7,12 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var product_list_component_1 = require("./product-list.component");
+var shared_module_1 = require("../shared/shared.module");
 var product_detail_component_1 = require("./product-detail.component");
 var product_edit_component_1 = require("./product-edit.component");
 var product_filter_pipe_1 = require("./product-filter.pipe");
+var product_list_component_1 = require("./product-list.component");
+var product_resolver_service_1 = require("./product-resolver.service");
 var product_service_1 = require("./product.service");
-var shared_module_1 = require("../shared/shared.module");
 var ProductModule = (function () {
     function ProductModule() {
     }
@@ -24,8 +25,8 @@ ProductModule = __decorate([
             shared_module_1.SharedModule,
             router_1.RouterModule.forChild([
                 { path: 'products', component: product_list_component_1.ProductListComponent },
-                { path: 'products/:id', component: product_detail_component_1.ProductDetailComponent },
-                { path: 'products/:id/edit', component: product_edit_component_1.ProductEditComponent }
+                { path: 'products/:id', component: product_detail_component_1.ProductDetailComponent, resolve: { product: product_resolver_service_1.ProductResolver } },
+                { path: 'products/:id/edit', component: product_edit_component_1.ProductEditComponent, resolve: { product: product_resolver_service_1.ProductResolver } }
             ])
         ],
         declarations: [
@@ -35,7 +36,8 @@ ProductModule = __decorate([
             product_filter_pipe_1.ProductFilterPipe
         ],
         providers: [
-            product_service_1.ProductService
+            product_service_1.ProductService,
+            product_resolver_service_1.ProductResolver
         ]
     })
 ], ProductModule);
