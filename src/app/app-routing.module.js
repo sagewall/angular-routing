@@ -22,7 +22,7 @@ var AppRoutingModule = (function () {
 AppRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
-            router_1.RouterModule.forRoot(ROUTES),
+            router_1.RouterModule.forRoot(ROUTES, { enableTracing: true }),
         ],
         exports: [router_1.RouterModule]
     })
