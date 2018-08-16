@@ -39,6 +39,7 @@ var AppComponent = (function () {
         this.messageService.isDisplayed = true;
     };
     AppComponent.prototype.hideMessages = function () {
+        this.router.navigate([{ outlets: { popup: null } }]);
         this.messageService.isDisplayed = false;
     };
     AppComponent.prototype.logOut = function () {

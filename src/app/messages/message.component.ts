@@ -27,9 +27,11 @@ import { MessageService } from '../messages/message.service';
 export class MessageComponent {
 
     constructor(private messageService: MessageService,
-                private router: Router) { }
+        private router: Router) { }
 
     close(): void {
         // Close the popup.
+        this.router.navigate([{ outlets: { popup: null } }]);
+        this.messageService.isDisplayed = false;
     }
 }
