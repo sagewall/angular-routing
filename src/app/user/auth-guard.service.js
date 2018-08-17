@@ -17,12 +17,13 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        return this.checkLoggedIn();
+        return this.checkLoggedIn(state.url);
     };
-    AuthGuard.prototype.checkLoggedIn = function () {
+    AuthGuard.prototype.checkLoggedIn = function (url) {
         if (this.authService.isLoggedIn()) {
             return true;
         }
+        this.authService.redirectUrl = url;
         this.router.navigate(['/login']);
         return false;
     };
