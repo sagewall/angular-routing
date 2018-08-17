@@ -9,6 +9,7 @@ import { ProductFilterPipe } from './product-filter.pipe';
 import { ProductListComponent } from './product-list.component';
 import { ProductResolver } from './product-resolver.service';
 import { ProductService } from './product.service';
+import { AuthGuard } from '../user/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ProductService } from './product.service';
     RouterModule.forChild([
       {
         path: 'products',
+        canActivate: [AuthGuard],
         children: [
           { path: '', component: ProductListComponent },
           { path: ':id', component: ProductDetailComponent, resolve: { product: ProductResolver } },
