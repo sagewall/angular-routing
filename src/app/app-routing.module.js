@@ -12,7 +12,7 @@ var page_not_found_component_1 = require("./page-not-found.component");
 var auth_guard_service_1 = require("./user/auth-guard.service");
 var ROUTES = [
     { path: 'welcome', component: welcome_component_1.WelcomeComponent },
-    { path: 'products', canActivate: [auth_guard_service_1.AuthGuard], loadChildren: 'app/products/product.module#ProductModule' },
+    { path: 'products', canLoad: [auth_guard_service_1.AuthGuard], loadChildren: 'app/products/product.module#ProductModule' },
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
 ];
