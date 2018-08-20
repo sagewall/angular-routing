@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { AuthGuard } from './user/auth-guard.service';
 
 const ROUTES = [
   { path: 'welcome', component: WelcomeComponent },
+  { path: 'products', canActivate: [AuthGuard], loadChildren: 'app/products/product.module#ProductModule' },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -16,6 +17,6 @@ const ROUTES = [
       // { enableTracing: true }
     ),
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
